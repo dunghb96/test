@@ -1,0 +1,153 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+
+///-----------------アニメーション//
+
+.scaleText {
+  margin-top: 1em;
+  animation: scaletext 2s ease 0s infinite normal;
+}
+
+@keyframes scaletext {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.scrollIn,.loadIn {
+  transition: all 800ms;
+  opacity: 0;
+  &.up { transform: translate(0, 50px);}
+  &.down { transform: translate(0, -50px);}
+  &.right { transform: translate(50px, 0);}
+  &.left { transform: translate(-50px, 0);}
+  &.scale { transform: scale(0);}
+  &.bound { transform: translate(0, -50px);}
+  &.arcRight { transform: rotate(30deg);transform-origin: center 150%;}
+  &.arcLeft { transform: rotate(-30deg);transform-origin: center 150%;}
+  &.para {
+    transform: translate(0, 150px);
+    opacity: 1;
+    > * {
+      transform: translate(0, 150px);
+    }
+  }
+  &.reduct {
+    transform: scale(1.5);
+    transform-origin: center;
+  }
+
+
+  &.active {
+    transition: all 800ms ease-out;
+    transform: none;
+    opacity: 1;
+    &.bound {
+      animation: bound 1.2s ease 0s 1 forwards;
+    }
+    &.para {
+      > * {
+        transition: all 1000ms;
+        transition-delay: 50ms;
+        transform: none;
+      }
+    }
+  }
+}
+
+.scroll {
+  &.leftSlide {
+    position: relative;
+    display: table;
+    transition: .4s;
+    transform: scaleX(0);
+    transform-origin: left;
+    &:before {
+      content: ''!important;
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      margin: auto;
+      transform-origin: right;
+      background: $color03;
+    }
+    > * {
+      margin: auto;
+      padding: 0;
+      opacity: 0;
+    }
+
+  }
+  &.active {
+    transition: .4s;
+    transition-delay: .6s;
+    transform: none;
+    &:before {
+      animation: leftSlide 1s ease-in 0s 1 forwards;
+    }
+    > * {
+      transition-delay: .6s;
+      opacity: 1;
+    }
+  }
+}
+
+@for $i from 1 through 30 {
+  .scrollIn.active.each ~ .scrollIn.active.each:nth-of-type(#{$i}),
+  .loadIn.active.each ~ .loadIn.active.each:nth-of-type(#{$i}) {
+    transition-delay: #{$i * 80}ms;
+  }
+  .scroll.active.leftSlide.each {
+    &:nth-of-type(#{$i}):before {
+      animation-delay: #{$i * 200}ms;
+    }
+    > *:nth-of-type(#{$i}) {
+      transition-delay: #{$i * 1200}ms;
+    }
+  }
+  .bound.active.each ~ .bound.active.each:nth-of-type(#{$i}) {
+    transition-delay: none!important;
+    animation-delay: #{$i * 100}ms!important;
+  }
+}
+
+@keyframes bound {
+  100%, 20%, 50%, 80% {
+    transform: translateY(0) scale(1);
+  }
+  // 10%, 30% {
+  //   transform: translateY(0) scale(1.1,0.8);
+  // }
+  0%, 40% {
+    transform: translateY(-20%) scale(1);
+  }
+  60% {
+    transform: translateY(-10%) scale(1);
+  }
+}
+
+
+@keyframes leftSlide {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 105%;
+    transform: scaleX(1);
+  }
+  70% {
+    width: 105%;
+    transform: scaleX(1);
+  }
+  100% {
+    width: 105%;
+    transform: scaleX(0);
+  }
+}

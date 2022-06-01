@@ -1,0 +1,147 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+* {	font-size:100%;}
+
+html,
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  overflow: auto;
+  font-size: 62.5%;
+  // @media screen and  ( max-width : 980px ) {
+  //   font-size: 50.5%;
+  // }
+  // @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+  //   font-size: 52.5%;
+  // }
+}
+
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: $baseFont;
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+  word-wrap: break-word;
+  color: $colorText;
+  background-color: $bgBody;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "palt";
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+}
+
+main {
+  min-height: 84.3vh;
+}
+
+ol, ul {
+  list-style: none;
+}
+ol > li > ul,
+ul > li > ul {
+  padding-top: .3em;
+  padding-left: 0;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+section {
+  clear: both;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+}
+a:focus, *:focus {
+  outline: none;
+}
+a, a img {
+  transition: .2s;
+}
+a:hover {
+  text-decoration: none;
+}
+a:hover > img {
+  cursor: pointer;
+  transition: .2s;
+  opacity: 0.7;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    vertical-align: middle;
+  }
+}
+
+figure figcaption {
+  margin: 1em auto;
+  text-align: left;
+}
+strong {
+  font-weight: bold;
+}
+
+li,td,th,dt,dd,p,figcaption {
+  text-align: inherit;
+}
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  text-align: left;
+  letter-spacing: 0.06em;
+  word-break: break-all;
+  >a:not(.btnStyle) {
+    text-decoration: underline;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+}
+
+@media screen and (min-width: $viewSP+px) {
+  a[href^="tel:"] {
+    text-decoration: none;
+    pointer-events: none;
+  }
+}
+.contentInner {
+  width: 100%;
+  max-width: $containerSize+px;
+  margin: 0 auto;
+  padding: 0;
+  @media screen and (max-width : $containerSize+px) {
+    padding: 0 1.5%;
+  }
+  @media screen and (max-width : ($viewTablet - 1)+px) {
+    padding: 0 5%;
+  }
+}

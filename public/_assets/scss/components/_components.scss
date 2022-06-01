@@ -1,0 +1,27 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+
+///-----------------グーグルマップ・YouTube//
+
+.frameWrapper, .youtubeWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 390px;
+  min-height: 475px;
+  margin-bottom: 10px;
+  padding-top: 53%;
+  @include media(max, $header_breakPoint) {
+    max-width: inherit;
+    min-height: inherit;
+    padding-top: 410px;
+  }
+
+  iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

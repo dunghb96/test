@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="ico_error" transform="translate(2.3 2.3)">
+    <circle id="circle" cx="8" cy="8" r="8" transform="translate(-2.3 -2.3)" fill="#b1b1b1"/>
+    <g id="ico_close" transform="translate(0.7 0.7)">
+      <path id="close" d="M269.251,66.111l3.121-3.121a.251.251,0,0,0,0-.355l-.354-.354a.251.251,0,0,0-.354,0L268.543,65.4l-3.122-3.121a.251.251,0,0,0-.354,0l-.354.354a.252.252,0,0,0,0,.355l3.122,3.121-3.122,3.121a.252.252,0,0,0,0,.355l.354.354a.251.251,0,0,0,.354,0l3.122-3.121,3.121,3.121a.251.251,0,0,0,.354,0l.354-.354a.251.251,0,0,0,0-.355Z" transform="translate(-263.539 -61.107)" fill="#fff"/>
+      <rect id="box" width="10" height="10" fill="none"/>
+    </g>
+  </g>
+</svg>

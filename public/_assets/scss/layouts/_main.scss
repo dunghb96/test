@@ -1,0 +1,305 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+///-----------------見出し//
+
+// main {
+//   h2,.voiceTitle {
+//     @include fontsize(nth($h2, 1), nth($h2, 2));
+//     position: relative;
+//     display: table;
+//     margin: 0 auto .5em;
+//     padding: 0 0;
+//     font-family: $fontMincho;
+//     font-weight: 600;
+//     line-height: 1.3;
+//     table-layout: fixed;
+//     text-align: center;
+//     letter-spacing: 0.05em;
+//     color: $colorText;
+
+//     span {
+//       display: block;
+//       margin: 0 auto;
+//       font-weight: normal;
+//       line-height: 1.5;
+//       letter-spacing: .08em;
+//       color: $color02;
+//     }
+//     &:after {
+//       @include gradation(#EDCCD7, #BD4068);
+//       content: '';
+//       position: absolute;
+//       right: 0;
+//       bottom: 0;
+//       left: 0;
+//       width: 100%;
+//       height: 1px;
+//       margin: auto;
+//     }
+//   }
+//   h3 {
+//     @include fontsize(nth($h3, 1), nth($h3, 2));
+//     position: relative;
+//     display: table;
+//     margin: .5em auto;
+//     padding: 0 0 .1em;
+//     font-family: $fontMincho;
+//     font-weight: 600;
+//     line-height: 1.3;
+//     table-layout: fixed;
+//     letter-spacing: .05em;
+//     border-bottom: 1px solid #edccd7;
+//   }
+
+//   h4 {
+//     @include fontsize(nth($h4, 1), nth($h4, 2));
+//     position: relative;
+//     margin-bottom: 1em;
+//     padding: 0 0 .5em;
+//     font-family: $fontMincho;
+//     font-weight: bold;
+//     line-height: normal;
+//     text-align: left;
+//     letter-spacing: 0;
+//     color: $colorText;
+//     border-bottom: 1px solid $color01;
+//   }
+
+//   h1,h2,h3,h4,h5,h6 {
+//     a,a:hover {
+//       text-decoration: none;
+//       color: inherit;
+//     }
+//     img {
+//       vertical-align: middle;
+//     }
+//   }
+// }
+
+// .numberTitle span {
+//   position: relative;
+//   display: inline;
+//   padding-left: 1.5em;
+//   font-size: 100%;
+//   vertical-align: text-bottom;
+
+//   &:after {
+//     content: "0" counter(number) ;
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     bottom: 0;
+//     left: 0;
+//     margin: auto;
+//     counter-increment: number 1;
+//   }
+// }
+
+//----------------- カラム//
+
+// $blockMargin: 2.6%;
+
+// .columnWrap {
+//   display: block;
+//   overflow: hidden;
+//   width: 100%;
+//   table-layout: fixed;
+
+//   .columnRow {
+//     position: relative;
+//     display: block;
+//     clear: both;
+//     overflow: hidden;
+//     width: 100%;
+//     padding: 0;
+
+//     > .columnBlock {
+//       display: block;
+//       float: left;
+//       width: 48.2%;
+//       margin: auto;
+//       margin-top: 1.3%;
+//       margin-left: $blockMargin;
+//       padding: 0;
+//       text-align: left;
+
+//       // p {
+//       //   text-align: left;
+//       // }
+//       // figure {
+//       //   display: block;
+//       //   margin: auto;
+//       // }
+//     }
+//     > .columnBlock:first-child {
+//       margin-left: 0!important;
+//     }
+//     > .columnBlock:last-child {
+//       margin-right: 0!important;
+//     }
+//     &.-vertical > .columnBlock {
+//       position: relative;
+//       display: inline-block;
+//       float: none;
+//       vertical-align: middle;
+//     }
+//     &.-reversal > .columnBlock {
+//       position: relative;
+//       float: right;
+//     }
+//     .columnBlock.-last + .columnBlock {
+//       clear: both;
+//       margin-left: 0;
+//     }
+//     &.-reversal > .columnBlock:first-child {
+//       margin-left: $blockMargin!important;
+//     }
+//     &.-reversal > .columnBlock:last-child {
+//       margin-left: 0;
+//     }
+//     &.-wide > .columnBlock {
+//       width: 46.5%;
+//       margin-left: 6.4%;
+//     }
+
+//     @for $i from 2 through 8 {
+//       &.-blocks#{$i} > .columnBlock {
+//         width: calc((100% - #{$blockMargin} * (#{$i} - 1)) / #{$i});
+//         margin-left: calc(#{$blockMargin} - 6px);
+//         &:nth-child(#{$i}n) + .columnBlock {
+//           clear: both;
+//           margin-left: 0!important;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @for $i from 2 through 19 {
+//   .columnRow > .columnBlock.-wd#{$i*5} { width:#{$i * 5 - math.div($blockMargin, 2) - .5};}
+// }
+// .columnRow > .columnBlock.-wd100 {
+//   width: 100%;
+// }
+
+// @if $spMode == false {
+//   @media ( max-width : ($viewTablet - 1)+px ) {
+//     .columnWrap .columnRow:not(.-fix) {
+//       > .columnBlock {
+//         display: block;
+//         float: none;
+//         width: 100%;
+//         margin: 0 auto 15px;
+//         &:first-child {
+//           margin-left: 0!important;
+//         }
+//       }
+//       &.-sp_2 {
+//         > .columnBlock {
+//           display: block;
+//           float: left;
+//           width: math.div(100% - $blockMargin, 2);
+//           margin: auto;
+//           margin-top: 2%;
+//           padding: 0;
+//           text-align: left;
+
+//           &:nth-child(even) {
+//             margin-left: $blockMargin;
+//           }
+//           &:nth-child(odd) {
+//             clear: both;
+//             margin-left: 0!important;
+//           }
+//         }
+//         @for $i from 2 through 8 {
+//           &.columnBlocks-#{$i} > .columnBlock {
+//             &:nth-child(#{$i}n) + .columnBlock {
+//               clear: none;
+//             }
+//           }
+//         }
+//       }
+//       &.-sp_3 {
+//         > .columnBlock {
+//           display: block;
+//           float: left;
+//           clear: none!important;
+//           width: calc((100% - #{$blockMargin} * 2) / 3);
+//           margin: auto;
+//           margin-top: 2%;
+//           padding: 0;
+//           text-align: left;
+
+//           &:not(:nth-child(3n+1)) {
+//             margin-left: $blockMargin!important;
+//           }
+//           &:nth-child(3n+1) {
+//             clear: both!important;
+//             margin-left: 0!important;
+//           }
+//         }
+//         @for $i from 2 through 8 {
+//           &.columnBlocks-#{$i} > .columnBlock {
+//             &:nth-child(#{$i}n) + .columnBlock {
+//               clear: none;
+//             }
+//           }
+//         }
+//       }
+//       @for $i from 2 through 20 {
+//         .columnRow > .columnBlock.-wd#{$i*5} { width: 100%;}
+//       }
+//     }
+//   }
+// }
+
+///-----------------フレックスボックス//
+
+.flexBox {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flexBox.-vertical {
+  align-items: center;
+}
+
+.flexBox.-reversal {
+  flex-direction: row-reverse;
+}
+
+.flexBox.-flexBetween {
+  justify-content: space-between;
+}
+@for $i from 2 through 8 {
+  .flexBox.-blocks#{$i} > * {
+    width: calc(100% / #{$i});
+  }
+}
+
+@if $spMode == false {
+  @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+    .flexBox:not(.-sp_2) {
+      > * {
+        display: block;
+        width: 100%;
+        &:not(ul) {
+          margin: auto;
+        }
+      }
+    }
+    .flexBox.-sp_2 {
+      > * {
+        width: calc(100% / 2);
+      }
+    }
+  }
+}
+

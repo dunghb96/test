@@ -1,0 +1,58 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+
+//----------------- モーダル/
+
+.lity {
+  background: rgba(#111, .6);
+  .lity-container {
+    width: 100%;
+    max-width: $containerSize+px;
+    @include media() {
+      width: 90%;
+    }
+  }
+  .lity-close {
+    position: absolute;
+    font-size: 30px;
+    color: #555;
+    text-shadow: none;
+  }
+  .modalBox {
+    width: 100%;
+    padding: 45px 10px;
+    text-align: center;
+    background: #fff;
+    @include media() {
+      padding: 2em 1em;
+    }
+    .cancelBtn {
+      position: relative;
+      display: block;
+      margin: 21px auto 0;
+      padding-left: 1.2em;
+      font-weight: bold;
+      line-height: 1;
+      color: #555;
+      border: 0;
+      background: none;
+      &::before,&::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 2px;
+        height: 16px;
+        margin: auto;
+        transform: rotate(45deg);
+        transform-origin: center;
+        background: #555;
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

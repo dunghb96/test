@@ -1,0 +1,4 @@
+<svg id="ico_check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <path id="check" d="M374.707,205.975l3.728,3.567,6.272-6" transform="translate(-369.707 -196)" fill="none" stroke="#113293" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <rect id="box" width="20" height="20" fill="none"/>
+</svg>

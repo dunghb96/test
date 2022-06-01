@@ -1,0 +1,31 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+
+.tokusyo {
+  padding: 45px 0 80px;
+  .contentInner {
+    max-width: 728px;
+    margin: auto;
+  }
+  h2 {
+    margin-bottom: 1em;
+    font-size: 3.6rem;
+    font-weight: bold;
+    @include media() {
+      font-size: 2.8rem;
+    }
+  }
+  .tokusyoList {
+    dt {
+      margin-bottom: .5em;
+      padding-bottom: .5em;
+      font-size: 2rem;
+      font-weight: bold;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    dd {
+      margin-bottom: 40px;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<svg id="ico_tab" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <rect id="box" width="20" height="20" fill="none"/>
+  <g id="PATH" transform="translate(-153.97 -102)">
+    <path id="パス_19" data-name="パス 19" d="M165.97,120h-10a1,1,0,0,1-1-1v-9a1,1,0,0,1,1-1h10a1,1,0,0,1,1,1v9A1,1,0,0,1,165.97,120Zm-9-2h8v-7h-8Z" fill="#113293"/>
+    <path id="パス_20" data-name="パス 20" d="M171.97,115h-2.727a1,1,0,0,1,0-2h1.727v-7h-8v1.25a1,1,0,1,1-2,0V105a1,1,0,0,1,1-1h10a1,1,0,0,1,1,1v9A1,1,0,0,1,171.97,115Z" fill="#113293"/>
+  </g>
+</svg>

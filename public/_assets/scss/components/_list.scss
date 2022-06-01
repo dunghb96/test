@@ -1,0 +1,59 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+
+//----------------- パンくずリスト//
+
+.breadcrumb {
+  margin-top: 16px;
+  margin-bottom: 15px;
+  margin-left:0;
+  padding-left:0;
+  line-height: 1.0;
+  @include media() {
+    display: none;
+  }
+
+  li {
+    display:inline;
+    padding-right: 10px;
+    font-size: 1.2rem;
+    list-style: none;
+    color: #555;
+
+    &:not(:last-child):after {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      margin-left: 10px;
+      transform: rotate(
+        45deg
+      ) translateY(-1px);
+      transform-origin: top;
+      vertical-align: middle;
+      border-top: 1.5px solid $colorText;
+      border-right: 1.5px solid $colorText;
+
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #113293;
+      }
+    }
+  }
+}
+
+///-----------------リスト//
+
+ul.-disc {
+  margin: 0 auto;
+  padding-left: 1.5em;
+  list-style-type: disc;
+
+  > li {
+    margin-bottom: 2px;
+    text-align: left;
+  }
+}

@@ -1,0 +1,310 @@
+@use "../settings/mixins" as *;
+@use "../settings/variables" as *;
+@use "sass:math";
+///-----------------CSS図形//
+
+//丸に三角//
+.-circleArrow {
+  position: relative;
+  margin-right: .5em;
+  padding: 0 0 0 1em;
+  text-align: center;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 2px;
+    width: 0;
+    height: 0;
+    margin: auto;
+    border-width: 3px 0 3px 5.2px;
+    border-style: solid;
+    border-color: transparent transparent transparent $colorTextReversal;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    margin: auto;
+    border-radius: 50%;
+    background: $color01;
+  }
+}
+
+//数字リセット（親要素以上に指定）//
+.countReset {
+  overflow: hidden;
+  zoom: 1;
+  counter-reset: number 0;
+}
+
+
+//レスポンシブ丸//
+
+.-circle {
+  position: relative;
+  overflow: hidden;
+  padding: 50%;
+  border-radius: 50%;
+  background-color: $color01;
+
+  > span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin: -.5em 0 0;
+    line-height: 1;
+    text-align: center;
+    color: $colorText;
+  }
+  > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+
+.annotation {
+  position: relative;
+  margin-bottom: 0;
+  font-size: 80%;
+  &::before {
+    content: '※';
+    margin-right: .2em;
+  }
+}
+
+//-----------------汎用クラス//
+
+.-color01 {color: $color01+!important;}
+.-color02 {color: $color02+!important;}
+.-color03 {color: $color03+!important;}
+.-color04 {color: $color04+!important;}
+.-textRed { color: red!important;}
+
+.-textMarker {
+  line-height: 1.3!important;
+  background: linear-gradient(transparent 65%, $color04 65%)!important;
+}
+
+.-textShadow {
+  text-shadow: 1px 1px 2px rgba(#000, .8), 1px 1px 4px rgba(#000, .4);
+}
+
+.-textEdge {
+  text-shadow:1px 1px 0 #fff, -1px -1px 0 #fff,
+    -1px 1px 0 #fff, 1px -1px 0 #fff,
+    0px 1px 0 #fff,  0 -1px 0 #fff,
+    -1px 0 0 #fff, 1px 0 0 #fff;
+}
+
+.highlight {
+  background: $color03;
+}
+
+.-textIndent {text-indent: 1em;}
+
+.-textLeft {text-align: left!important;}
+.-textCenter {text-align: center!important;}
+.-textRight {text-align: right!important;}
+
+.-textTop { vertical-align: top!important;}
+.-textMiddle { vertical-align: middle!important;}
+.-textBottom { vertical-align: bottom!important;}
+
+
+.-bold {font-weight: bold!important;}
+
+.-textSmall { font-size: 1.4rem;}
+
+.backLink {
+  font-weight: bold;
+  text-decoration: none!important;
+  color: #555;
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: .5em;
+    transform: rotate(45deg);
+    border-bottom: 2px solid #555;
+    border-left: 2px solid #555;
+  }
+}
+
+.-blank {
+  position: relative;
+  padding-bottom: .3em;
+  text-decoration: none!important;
+  opacity: 1;
+  @include media(min) {
+    &:hover {
+      opacity: .8;
+      color: #113293;
+      &::before {
+        width: calc(100% - 25px);
+        transition: .5s;
+      }
+    }
+  }
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: .5em;
+    vertical-align: middle;
+    background: url("../img/icon_tab.svg") no-repeat center / 100%;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    margin: auto;
+    transition: .5s;
+    background: #113293;
+  }
+}
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  border: 0;
+  background-color: transparent;
+  text-shadow: none;
+}
+
+@media screen and  ( min-width : $viewTablet+px ) {
+  .pc-textCenter {text-align: center!important;}
+  .pc-textRight {text-align: right!important;}
+  .pc-textLeft {text-align: left!important;}
+}
+
+@media screen and  ( max-width : ($viewTablet - 1)+px ) {
+  .sp-textCenter {text-align: center!important;}
+  .sp-textRight {text-align: right!important;}
+  .sp-textLeft {text-align: left!important;}
+}
+
+.-pd0 {padding: 0em!important;}
+.-pd1 {padding: 1em!important;}
+.-mb0 {margin-bottom: 0em!important;}
+
+// .-mincho {
+//   font-family: $fontMincho!important;
+// }
+
+// .-gothic {
+//   font-family: $fontGothic!important;
+// }
+
+.-inversion {
+  h2,h3,h4,h5 {
+    color: $colorTextReversal;
+    &:after,&:before {
+      border-color: $colorTextReversal;
+      background-color: $colorTextReversal;
+    }
+    span {
+      color: $colorTextReversal;
+    }
+  }
+  p, li, td, th, a, figcaption {
+    color: $colorTextReversal;
+  }
+}
+
+
+// @for $i from 0 through 40 {
+//   .mb#{$i*5} {
+//     margin-bottom: #{$i*5}px!important;
+//   }
+//   .mt#{$i*5} {
+//     margin-top: #{$i*5}px!important;
+//   }
+//   .pb#{$i*5} {
+//     padding-bottom: #{$i*5}px!important;
+//   }
+//   .pt#{$i*5} {
+//     padding-top: #{$i*5}px!important;
+//   }
+// }
+
+// @for $i from 12 through 50 {
+//   .font#{$i} {
+//     font-size: #{$i*0.1}rem!important;
+//   }
+//   @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+//     .-sp_font#{$i} {
+//       font-size: #{$i*0.1}rem!important;
+//     }
+//   }
+// }
+
+img.-alignright {
+  float:right;
+  margin:0 0 10px 2%;
+}
+img.-alignleft {
+  float:left;
+  margin:0 2% 10px 0;
+}
+
+@if $spMode == false {
+  @media screen and  ( max-width : ($viewTablet - 1)+px ) {
+    img.-alignright,
+    img.-alignleft {
+      display:block;
+      float: none;
+      margin:0 auto 20px;
+    }
+  }
+}
+
+/*/-----------------PC＆SP*/
+
+@media only screen and (min-width: $viewTablet+px) {
+  .pcOnly {display: block;}
+  img.pcOnly {display: inline;}
+  .spOnly {display: none!important;}
+}
+@media only screen and (max-width: ($viewTablet - 1)+px) {
+  .pcOnly { display: none!important;}
+  .spOnly {display: block;}
+  img.spOnly { display: inline;}
+}
+@media only screen and (min-width: $header_breakPoint+px) {
+  header {
+    .pcOnly {display: block;}
+    img.pcOnly {display: inline;}
+    .spOnly {display: none!important;}
+  }
+}
+@media only screen and (max-width: ($header_breakPoint - 1)+px) {
+  header {
+    .pcOnly { display: none!important;}
+    .spOnly {display: flex!important;}
+    img.spOnly { display: inline!important;}
+  }
+}
